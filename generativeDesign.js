@@ -14,25 +14,28 @@ let frameCount = 0;
 // achtergrond zwart maken na elke beweging opnieuw
 context.fillStyle = "black";
 context.fillRect(0,0,width,height);
-// de functies oproepen met de positie in width en height om ervoor te zorgen dat het design correct getekend word op alle schermformaten
+
 update();
 
-    
 // de functie om de cirkel in het midden te tekenen
 function update() {
     frameCount++;
-    context.fillStyle = utils.rgb(utils.randomNumber(150,255), utils.randomNumber(150,255), utils.randomNumber(150,255));
+    context.fillStyle = "blue";
     utils.fillCircle(xPos,yPos, 32);
     xPos += utils.randomNumber(-10, 10);
     context.fillStyle = "black";
     context.fillRect(0, 0, width, height);
-    requestAnimationFrame(update);
     drawRectanglesDown(xPos - 25, yPos + 30);
     drawRectanglesLeft(xPos - 80, yPos - 25);
     drawRectanglesUp(xPos - 25, yPos - 85);
     drawRectanglesRight(xPos + 30, yPos - 25);
 
+    signature();
+
+    requestAnimationFrame(update);
 } 
+
+
 
 // de functie om de rechthoeken naar beneden te tekenen
 function drawRectanglesDown(xPos, yPos) {
@@ -73,25 +76,17 @@ function drawRectanglesRight(xPos, yPos) {
     }
 } 
 
-for (let i = 0; i < 4; i++) {
 
-    utils.randomNumber(0, 100);
-
+function signature() {
+    context.fillRect(1165, 413, 300, 300);
+    context.fillStyle = "orange";
+    context.fillRect(1190, 638, 250, 50);  
+    context.fillRect(1190, 488, 50, 50);
+    context.fillRect(1240, 488, 50, 50);
+    context.fillRect(1240, 438, 50, 50);
+    context.fillRect(1290, 438, 50, 50);
+    context.fillRect(1340, 438, 50, 50);
+    context.fillRect(1340, 488, 50, 50);
+    context.fillRect(1390, 488, 50, 50);
 }
-
-// signature();
-
-// function signature() {
-
-//     context.fillRect(100, 100, 300, 300);
-//     context.fillStyle = "orange";
-//     context.fillRect(125, 325, 250, 50);  
-//     context.fillRect(125, 175, 50, 50);
-//     context.fillRect(175, 175, 50, 50);
-//     context.fillRect(175, 125, 50, 50);
-//     context.fillRect(225, 125, 50, 50);
-//     context.fillRect(275, 125, 50, 50);
-//     context.fillRect(275, 175, 50, 50);
-//     context.fillRect(325, 175, 50, 50);
-// }
 
