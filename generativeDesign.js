@@ -6,25 +6,21 @@ const height = context.canvas.height;
 
 //variabelen aanmaken 
 let color;
-let squareSize = [45, 55, 65, 75];
+let squareSize = [45];
 let xPos = width / 2;
 let yPos = height / 2;
 let frameCount = 0;
 
-// achtergrond zwart maken na elke beweging opnieuw
-context.fillStyle = "black";
-context.fillRect(0,0,width,height);
-
+drawCircle();
 update();
 
-// de functie om de cirkel in het midden te tekenen
 function update() {
     frameCount++;
-    context.fillStyle = "blue";
-    utils.fillCircle(xPos,yPos, 32);
-    xPos += utils.randomNumber(-10, 10);
+
+    // achtergrond zwart maken na elke beweging opnieuw
     context.fillStyle = "black";
     context.fillRect(0, 0, width, height);
+    drawCircle();
     drawRectanglesDown(xPos - 25, yPos + 30);
     drawRectanglesLeft(xPos - 80, yPos - 25);
     drawRectanglesUp(xPos - 25, yPos - 85);
@@ -35,11 +31,14 @@ function update() {
     requestAnimationFrame(update);
 } 
 
+function drawCircle() {
+    context.fillStyle = "red";
+    utils.fillCircle(xPos,yPos, 32)
+}
 
 
 // de functie om de rechthoeken naar beneden te tekenen
 function drawRectanglesDown(xPos, yPos) {
-    
     for (let i = 0; i < 70; i++) {
         color = utils.rgb(utils.randomNumber(0,100), utils.randomNumber(0,100), utils.randomNumber(0,100));
         context.fillStyle = color;
@@ -76,6 +75,9 @@ function drawRectanglesRight(xPos, yPos) {
     }
 } 
 
+
+
+//signature rechts beneden tekenen
 
 function signature() {
     context.fillRect(1165, 413, 300, 300);
